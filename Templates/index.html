@@ -1,0 +1,106 @@
+{% load static %}
+{% static "img" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/Travel icon.jpeg' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <style>
+      .hero {
+    background-image: url("{% static 'img/news.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+    </head>
+    <body>
+    
+      <!-- Header -->
+      <header class="header">
+        <div class="top-bar">
+          <div class="logo"><h1>TRAVAERA</h1></div>
+          <div class="right">
+            <span>CONTACT US</span><br>
+            <span>PHONE: <strong>9876543210</strong></span><br>
+            <span>E-MAIL: <strong>travaera@gmail.com</strong></span>
+          </div>
+        </div>
+        <div class="nav-bar">
+          <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'tours' %}">Tours</a>
+            <a href="{% url 'about' %}">About Us</a>
+            {% if user.is_authenticated %}
+            <a><strong>Hello, {{user.first_name}}</strong></a>
+            <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+          </nav>
+        </div>
+      </header>
+    
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-overlay">
+          <h2>LET US TAKE YOU TO YOUR</h2>
+          <h1>DREAM DESTINATIONS IN INDIA</h1>
+          <div class="search-bar">
+            <select>
+              <option>Hyderabad</option>
+              <option>Bengaluru</option>
+              <option>Mumbai</option>
+              <option>Surat</option>
+              <option>New Delhi</option>
+              <option>Mysore</option>
+            </select>
+            <input type="text" placeholder="Your Budget ($)">
+            <button>Find Your Tours</button>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Offers Section -->
+      <section class="offers">
+        <h2>BEST OFFERS</h2>
+        <p>Check out our top-rated tours</p>
+        <div class="cards">
+          {% for dest in dests|slice:":4" %}
+          <div class="card">
+            <img src="{{dest.img.url}}">
+            <h3>{{dest.name}}</h3>
+            <p>{{dest.desc}}</P>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      <!-- Footer -->
+       <footer style="background-color: #333; color: white; padding: 30px 0; text-align: center;">
+        <div class="footer-container" style="max-width: 1200px; margin: auto;">
+          <p>&copy; 2025 TRAVAERA. All rights reserved.</p>
+          <p>
+            <a href="{% url 'about' %}" style="color: #ccc; margin: 0 10px; text-decoration: none;">About Us</a> |
+            <a href="{% url 'tours' %}" style="color: #ccc; margin: 0 10px; text-decoration: none;">Tours</a> 
+          </p>
+          <p>
+            Follow us on:
+            <a href="#" style="color: #ccc; margin: 0 5px;">Facebook</a> |
+            <a href="#" style="color: #ccc; margin: 0 5px;">Instagram</a> |
+            <a href="#" style="color: #ccc; margin: 0 5px;">Twitter</a>
+          </p>
+        </div>
+      </footer>
+
+    </body>
+    </html>
+    

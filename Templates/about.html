@@ -1,0 +1,113 @@
+{% load static %}
+{% static "img" as baseUrl %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - TM Travels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #003366;
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    .about-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-container h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #003366;
+    }
+
+    .about-container p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .about-image {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .about-image img {
+      width: 80%;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+
+    .back-home {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .back-home a {
+      text-decoration: none;
+      background: #003366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>About Us</h1>
+    <p>Get to know the people behind your dream journeys</p>
+  </header>
+
+  <div class="about-container">
+    <h2>Who We Are</h2>
+    <p>At <strong>TM's Travel Agency</strong>, we believe that travel isn’t just about visiting places — it’s about creating unforgettable experiences. Since our founding in 2020, we’ve helped thousands of travelers explore destinations across India with comfort, joy, and safety.</p>
+
+    <div class="about-image">
+      <img src="{% static 'img/news.jpg' %}" alt="Team Travel">
+    </div>
+    <h2>What We Do</h2>
+    <p>We offer personalized tour packages, group travel plans, hotel bookings, guided experiences, and 24/7 customer support across India. Whether it’s a royal getaway to Jaipur, a spiritual journey to Varanasi, a serene houseboat stay in Kerala, or a scenic adventure in Manali — we’ve got you covered.</p>
+    <div class="about-image">
+        <img src="{% static 'img/about1.jpg' %}" alt="Cities">
+    </div>
+    <h2>Why Choose Us?</h2>
+    <p>
+      ✓ Experienced travel advisors<br>
+      ✓ Trusted by 10,000+ happy customers<br>
+      ✓ Affordable prices and premium service<br>
+      ✓ Tailor-made trips based on your interests
+    </p>
+
+    <div class="back-home">
+      <a href="{% url 'index' %}">← Back to Home</a>
+    </div>
+  </div>
+
+</body>
+</html>

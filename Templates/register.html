@@ -1,0 +1,119 @@
+{% load static %}
+{% static "img" as baseUrl %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/register.css' %}">
+    <style>
+        body {
+            background-image: url("{% static 'img/home_slider.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.15); /* semi-transparent white */
+            backdrop-filter: blur(10px); /* frosted glass effect */
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            color: #fff;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .messages h3 {
+            text-align: center;
+            color: #ffcccb;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="form-container">
+        <h2>Register</h2>
+        <form action="register" method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <input type="text" name="first_name" placeholder="First Name">
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="last_name" placeholder="Last Name">
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Username">
+            </div>
+
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password1" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password2" placeholder="Confirm Password">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+
+        <div class="messages">
+            {% for message in messages %}
+                <h3>{{ message }}</h3>
+            {% endfor %}
+        </div>
+        <div class="login-link" style="text-align: center; margin-top: 15px;">
+            <p>Already registered? <a href="{% url 'login' %}" style="color: #FFD700; text-decoration: underline;">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>
